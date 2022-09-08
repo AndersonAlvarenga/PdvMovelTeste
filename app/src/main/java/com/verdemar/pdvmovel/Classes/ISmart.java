@@ -2,6 +2,7 @@ package com.verdemar.pdvmovel.Classes;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.Toast;
 
 import com.verdemar.pdvmovel.MainActivity;
 import com.verdemar.pdvmovel.R;
@@ -66,7 +67,7 @@ public class ISmart {
         }
     }
 
-    public void smartCardStatus(ISMART ismart) {
+    public String smartCardStatus(ISMART ismart) {
         sb = new StringBuilder();
         this.iSmart = ismart;
         for (GEDI_SMART_e_Slot c : GEDI_SMART_e_Slot.values()) {
@@ -80,19 +81,19 @@ public class ISmart {
 
                 sb.append(r);
 
-
             } catch (GediException gedi_e_ret) {
                 System.out.println("iSmart.Status\t\t\t- FAIL (GEDI) - " + gedi_e_ret.getErrorCode().name());
             } catch (Exception e) {
                 System.out.println("iSmart.Status\t\t\t- FAIL - " + e.getMessage());
             }
         }
+        return sb.toString();
     }
 
     public boolean checkCard(ISMART ismart){
         boolean conected = false;
         long index = 0;
-        while(conected == false && index<1000000000){
+        while(conected == false && index<5000){
             try {
                 if (iSmart.Status(GEDI_SMART_e_Slot.USER) == GEDI_SMART_e_Status.PRESENT) {
                     conected = true;

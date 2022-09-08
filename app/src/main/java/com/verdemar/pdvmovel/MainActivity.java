@@ -8,7 +8,9 @@ import com.verdemar.pdvmovel.Classes.ISmart;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 
 import br.com.gertec.gedi.GEDI;
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity{
         GEDI.init(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.i("Inicio","On create");
     }
     //Metodo OK
 
@@ -61,7 +64,8 @@ public class MainActivity extends AppCompatActivity{
 
         smart.smartCardPowerOff(smart.getiSmart());
         boolean teste = smart.checkCard(smart.getiSmart());
-        smart.smartCardStatus(smart.getiSmart());
+        String retorno = smart.smartCardStatus(smart.getiSmart());
+        Toast.makeText(this,retorno,Toast.LENGTH_LONG).show();
 
     }
 

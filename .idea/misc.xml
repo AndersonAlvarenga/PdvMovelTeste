@@ -3,7 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Verdemar/AndroidStudioProjects/PdvMovel/app/src/main/res/layout/activity_dialog.xml" value="0.33" />
+        <entry key="..\:/Users/Verdemar/AndroidStudioProjects/PdvMovel/app/src/main/res/layout/activity_itens.xml" value="0.18" />
         <entry key="..\:/Users/Verdemar/AndroidStudioProjects/PdvMovel/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/Verdemar/AndroidStudioProjects/PdvMovel/app/src/main/res/layout/activity_mensagem.xml" value="0.18" />
+        <entry key="..\:/Users/Verdemar/AndroidStudioProjects/PdvMovel/app/src/main/res/layout/activity_transacion.xml" value="0.1" />
+        <entry key="..\:/Users/Verdemar/AndroidStudioProjects/PdvMovel/app/src/main/res/layout/activity_yes_no_activision.xml" value="0.25" />
+        <entry key="..\:/Users/Verdemar/AndroidStudioProjects/PdvMovel/app/src/main/res/layout/activity_yesno.xml" value="0.1911231884057971" />
+        <entry key="..\:/Users/Verdemar/AndroidStudioProjects/PdvMovel/app/src/main/res/layout/menu.xml" value="0.1" />
+        <entry key="..\:/Users/Verdemar/AndroidStudioProjects/PdvMovel/app/src/main/res/layout/menu_item.xml" value="0.15353260869565216" />
+        <entry key="..\:/Users/Verdemar/AndroidStudioProjects/PdvMovel/app/src/main/res/layout/transacao.xml" value="0.1" />
+        <entry key="..\:/Users/Verdemar/AndroidStudioProjects/PdvMovel/app/src/main/res/layout/yes_no.xml" value="0.1" />
       </map>
     </option>
   </component>

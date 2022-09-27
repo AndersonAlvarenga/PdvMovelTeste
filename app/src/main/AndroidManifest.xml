@@ -3,6 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.verdemar.pdvmovel">
 
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,13 +23,34 @@
         android:theme="@style/Theme.PdvMovel"
         tools:targetApi="31">
         <activity
+            android:name=".transacion"
+            android:exported="false" />
+        <activity
+            android:name=".Pagamento.Dialog"
+            android:exported="false" />
+        <activity
+            android:name=".Pagamento.mensagem"
+            android:exported="false" />
+        <activity
+            android:name=".Pagamento.yesno"
+            android:exported="false" />
+        <activity
+            android:name=".Pagamento.Itens"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="android.nfc.action.TECH_DISCOVERED" />
             </intent-filter>
+
+            <meta-data
+                android:name="android.nfc.action.TECH_DISCOVERED"
+                android:resource="@xml/techlist" />
         </activity>
     </application>
 

@@ -43,6 +43,35 @@ public class Led {
 
         }
     }
+    public void ledRedOn(){
+        try {
+            iLed.Set(GEDI_LED_e_Id.GEDI_LED_ID_RED,true);
+        } catch (GediException e) {
+            e.printStackTrace();
+        }
+    }
+    public void ledBlueOn(){
+        try {
+            iLed.Set(GEDI_LED_e_Id.GEDI_LED_ID_BLUE,true);
+        } catch (GediException e) {
+            e.printStackTrace();
+        }
+    }
+    public void ledGreenOn(){
+        try {
+            iLed.Set(GEDI_LED_e_Id.GEDI_LED_ID_GREEN,true);
+        } catch (GediException e) {
+            e.printStackTrace();
+        }
+    }
+    public void ledOrangeOn(){
+        try {
+            iLed.Set(GEDI_LED_e_Id.GEDI_LED_ID_ORANGE,true);
+        } catch (GediException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void ledOff() {
         System.out.println("ILed - Desligado");
         for (GEDI_LED_e_Id c : GEDI_LED_e_Id.values()) {

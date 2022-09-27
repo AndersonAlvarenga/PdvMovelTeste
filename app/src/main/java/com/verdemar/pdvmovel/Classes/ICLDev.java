@@ -2,6 +2,7 @@ package com.verdemar.pdvmovel.Classes;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import br.com.gertec.gedi.exceptions.GediException;
 import br.com.gertec.gedi.interfaces.ICL;
@@ -20,34 +21,36 @@ public class ICLDev {
     }
 
     public void AtivarContactless() {
-        try {
-            iCl = GEDI.getInstance().getCL();
 
-            System.out.println("getCL\t\t\t- OK");
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    iCl = GEDI.getInstance().getCL();
 
-        } catch (Exception e) {
-            System.out.println("getCL\t\t\t- FAIL - " + e.getMessage());
-        }
+                    System.out.println("getCL\t\t\t- OK");
 
 
-
-        cl_PowerOn();
-        cl_PowerOff();
-
-        final GEDI_CL_st_ISO_PollingInfo[] pollingInfo = new GEDI_CL_st_ISO_PollingInfo[1];
-        final GEDI_CL_st_MF_Key key = new GEDI_CL_st_MF_Key();
+                } catch (Exception e) {
+                    System.out.println("getCL\t\t\t- FAIL - " + e.getMessage());
+                }
+                cl_PowerOn();
+                cl_PowerOff();
+            }
+        }).start();
 
         new Thread(new Runnable() {
             @Override
             public void run() {
 
-                for (int i = 1; i <= 3; i++) {
 
+                final GEDI_CL_st_ISO_PollingInfo[] pollingInfo = new GEDI_CL_st_ISO_PollingInfo[1];
+                final GEDI_CL_st_MF_Key key = new GEDI_CL_st_MF_Key();
+
+                for (int i = 1; i <= 3; i++) {
                     final int aux = i;
                     try {
-
-
-                        pollingInfo[0] = iCl.ISO_Polling(5 * 1000);
+                        pollingInfo[0] = iCl.ISO_Polling(10000);
 
                         System.out.println("iCl.ISO_Polling\t\t\t- OK");
                         System.out.printf("iCl.ISO_Polling - peType: %s\n", pollingInfo[0].peType);
@@ -55,7 +58,9 @@ public class ICLDev {
 
                         byte[] abUID = pollingInfo[0].abUID;
 
+
                         String UID = arrayBytesToString(abUID);
+                        Log.i("AbUID", "run: "+UID);
                         System.out.println("iCl.PollingInfo UID: " + UID);
                         Log.e("UID","iCl.PollingInfo UID: " + UID);
                         key.abValue = new byte[]{0xf, 0xf, 0xf, 0xf};
@@ -123,11 +128,11 @@ public class ICLDev {
 
                     } catch (GediException gedi_e_ret) {
                         System.out.println("iCl.ISO_Polling\t\t\t- FAIL (GEDI) - " + gedi_e_ret.getErrorCode().name());
-
+                        Log.e("ErroGedExeption",gedi_e_ret.getErrorCode().name());
 
                     } catch (Exception e) {
                         System.out.println("iCl.ISO_Polling\t\t\t- FAIL - " + e.getMessage());
-
+                        Log.e("ErroExeption",e.getMessage());
 
                     }
                 }

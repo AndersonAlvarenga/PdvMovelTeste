@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Pagamento.Dialog">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="178dp"
+        android:background="#fff"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.005">
+
+
+        <TextView
+            android:id="@+id/tvMsg"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:background="#006000"
+            android:gravity="center_horizontal"
+            android:padding="10dip"
+            android:text="@string/app_name"
+            android:textColor="#fff"
+            android:textSize="10dp" />
+
+        <EditText
+            android:id="@+id/edInput"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dip"
+            android:layout_marginTop="10dip"
+            android:layout_marginRight="20dip"
+            android:autoLink="none"
+            android:inputType="text"
+            android:minHeight="48dp"
+            tools:ignore="SpeakableTextPresentCheck">
+
+            <requestFocus />
+
+            <requestFocus />
+
+        </EditText>
+
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:paddingTop="20dp">
+
+
+            <Button
+                android:id="@+id/btDlgOk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="20dip"
+                android:width="100dp"
+                android:onClick="ok"
+                android:text="OK"
+                android:textSize="12sp" />
+
+
+            <Button
+                android:id="@+id/btDlgCancelar"
+                android:layout_width="112dp"
+                android:layout_height="48dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dip"
+                android:width="100dp"
+                android:onClick="cancelar"
+                android:text="Cancelar"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

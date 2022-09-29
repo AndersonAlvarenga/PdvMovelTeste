@@ -23,7 +23,7 @@
         android:theme="@style/Theme.PdvMovel"
         tools:targetApi="31">
         <activity
-            android:name=".transacion"
+            android:name=".Pagamento.transacion"
             android:exported="false" />
         <activity
             android:name=".Pagamento.Dialog"

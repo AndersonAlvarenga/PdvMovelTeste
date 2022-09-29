@@ -4,7 +4,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.lib.tsg810.module.contactless.ContactlessModule;
+
 import com.verdemar.pdvmovel.Classes.Beep;
 import com.verdemar.pdvmovel.Classes.ICLDev;
 import com.verdemar.pdvmovel.Classes.Led;
@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements ICliSiTefListener
     private ICLDev iclDev;
     private NfcAdapter nfcAdapter;
     private CliSiTef cliSiTef;
-    private ContactlessModule contactlessModule;
     private byte[] key = {(byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF};
 
     private int trnResultCode;
@@ -72,7 +71,6 @@ public class MainActivity extends AppCompatActivity implements ICliSiTefListener
         instance = this;
         try{
             this.nfcAdapter = NfcAdapter.getDefaultAdapter(getApplicationContext());
-            this.contactlessModule = new ContactlessModule(this,this, nfcAdapter);
             this.cliSiTef = new CliSiTef(getApplicationContext());
             this.cliSiTef.setMessageHandler(hndMessage);
 
@@ -130,19 +128,9 @@ public class MainActivity extends AppCompatActivity implements ICliSiTefListener
         Log.i("onNewItent","Inicio onNewIntent");
         super.onNewIntent(intent);
         setIntent(intent);
-        contactlessModule.intentReceived(intent);
+
     }
 
-    public ArrayList<String> read(int blockRead, byte[] key) {
-        return contactlessModule.readCard(4,this.key);
-    }
-    public void writeTag(int offset, String data, byte[] key){
-        try {
-            contactlessModule.writeCard(offset,data,this.key);
-        }catch (Exception e){
-            Log.i("Erro ao escrever",e.getMessage());
-        }
-    }
 
     //Metodo OK
 
@@ -175,9 +163,7 @@ public class MainActivity extends AppCompatActivity implements ICliSiTefListener
         this.iclDev = new ICLDev(this);
         this.iclDev.AtivarContactless();
     }
-    public void btICL2(View view){
-        String texto = this.read(4,this.key).toString();
-    }
+
 
     public void btPrint(View v){
         Print print = new Print(this);
@@ -194,7 +180,7 @@ public class MainActivity extends AppCompatActivity implements ICliSiTefListener
         this.cliSiTef = CliSiTef.getInstance();
 
         this.cliSiTef.setDebug(true);
-        int idConfig = this.cliSiTef.configure("10.0.213.92", "00000000", "pdvrd.90","TipoPinPad=Android_AUTO");
+        int idConfig = this.cliSiTef.configure("10.0.213.78", "00000000", "pdvrd.90","TipoPinPad=Android_AUTO");
         this.cliSiTef.setActivity(this);
         int mod = Integer.valueOf(this.inputText.getText().toString());
         int i = this.cliSiTef.startTransaction(this,mod,"12","123456","20120514","120000","Teste","");

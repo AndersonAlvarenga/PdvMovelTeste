@@ -55,7 +55,7 @@ public class transacion extends Activity {
     }
 
     private void setStatus(String s) {
-        ((TextView) findViewById(R.id.tvStatusTrn)).setText(s);
+        ((TextView) findViewById(R.id.textStatusTransacionId)).setText(s);
         Log.d("SetStatus", "Status: " + s);
     }
 

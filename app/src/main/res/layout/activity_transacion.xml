@@ -7,7 +7,7 @@
     tools:context=".Pagamento.transacion">
 
     <TextView
-        android:id="@+id/textStatusId2"
+        android:id="@+id/textStatusTransacionId"
         android:layout_width="410dp"
         android:layout_height="44dp"
         android:layout_marginTop="4dp"
